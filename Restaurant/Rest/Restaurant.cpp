@@ -20,10 +20,13 @@ void Restaurant::RunSimulation()
 	switch (mode)	//Add a function for each mode in next phases
 	{
 	case MODE_INTR:
+		//Interactive
 		break;
 	case MODE_STEP:
+		//StepByStep
 		break;
 	case MODE_SLNT:
+		//Silent
 		break;
 	case MODE_DEMO:
 		Just_A_Demo();
@@ -100,7 +103,7 @@ void Restaurant::Just_A_Demo()
 		
 	//Just for sake of demo, generate some cooks and add them to the drawing list
 	//In next phases, Cooks info should be loaded from input file
-	int C_count = 12;	
+	int C_count = 5;	
 	Cook *pC = new Cook[C_count];
 	int cID = 1;
 

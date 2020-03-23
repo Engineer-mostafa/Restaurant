@@ -1,6 +1,6 @@
 #include "CancelEvent.h"
 
-CancelEvent::CancelEvent(int et, int id, Order  &c):Event(et,id),Cancel(c)
+CancelEvent::CancelEvent(int et, int id, Order &c):Event(et,id),Cancel(c)
 {
 
 }

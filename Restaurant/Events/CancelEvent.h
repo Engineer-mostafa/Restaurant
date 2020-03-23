@@ -1,13 +1,15 @@
 #ifndef __CancelEvent_H_
 #define __CancelEvent_H_
-#include"Events/Event.h"
-#include"Rest/Restaurant.h"
+#include"Event.h"
+#include"..\Rest\Order.h"
+#include"..\Rest\Restaurant.h"
+
 class CancelEvent :public Event
 {
 protected:
     int Timestep;
     int ID;
-    Order&Cancel;
+    Order Cancel;
 public:
     CancelEvent(int et,int id,Order& c);
     void setTimestep(int t);

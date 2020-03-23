@@ -28,6 +28,7 @@ public:
 	int GetID();
 
 	ORD_TYPE GetType() const;
+	void SetType(ORD_TYPE t);
 
 	void SetDistance(int d);
 	int GetDistance() const;

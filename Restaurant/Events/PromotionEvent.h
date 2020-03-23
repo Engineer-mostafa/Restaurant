@@ -1,11 +1,12 @@
 #pragma once
-#include"Events/Event.h"
-#include"Rest/Order.h"
+#include"Event.h"
+#include"..\Rest\Order.h"
+
 class PromotionEvent :public Event
 {
 protected:
 	double ExMoney;
-	Order &Promote;
+	Order Promote;
 public:
 	PromotionEvent(int ts, int id,Order &p, double ex);
 	void setExMoney(double E);

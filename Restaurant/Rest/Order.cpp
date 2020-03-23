@@ -11,6 +11,11 @@ Order::~Order()
 {
 }
 
+void Order::SetType(ORD_TYPE t)
+{
+	type = t;
+}
+
 int Order::GetID()
 {
 	return ID;
