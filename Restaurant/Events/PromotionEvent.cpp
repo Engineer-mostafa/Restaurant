@@ -20,7 +20,7 @@ void PromotionEvent::Execute(Restaurant* pRest)
 	if (Promote.getStatus() != DONE && Promote.GetType() == TYPE_NRM)
 	{
 		Promote.SetType(TYPE_VIP);
-		//Promote.setExtraMoney(ExMoney);
+		Promote.setMoney(Promote.GetMoney()+ExMoney);
 
 	}
 	else
