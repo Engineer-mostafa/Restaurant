@@ -1,6 +1,6 @@
 #include "CancelEvent.h"
 
-CancelEvent::CancelEvent(int et, int id, Order &c):Event(et,id),Cancel(c)
+CancelEvent::CancelEvent(int et, int id):Event(et,id)
 {
 
 }
@@ -17,25 +17,32 @@ int CancelEvent::getTimestep() const
 
 void CancelEvent::setID(int d)
 {
-	ID =( d > 0 && d < 1000) ? d : 0;
+	OrderID =( d > 0 && d < 1000) ? d : 0;
 }
 
 int CancelEvent::GetID() const
 {
-	return ID;
+	return OrderID;
 }
 
 void CancelEvent::Execute(Restaurant* pRest)
 {
-	if (Cancel.GetType() != TYPE_NRM&&ID!=Cancel.GetID())
-		return;
-	else 
-	{
-		//Cancel->setMoney(0);
-		Cancel.setStatus(DONE);
-		
-	}
-	
+	 pRest->Delete_Order(OrderID);
+
+
+
+
+
+
+	//if (Cancel.GetType() != TYPE_NRM&&ID!=Cancel.GetID())
+	//	return;
+	//else 
+	//{
+	//	//Cancel->setMoney(0);
+	//	Cancel.setStatus(DONE);
+	//	
+	//}
+	//
 
 
 

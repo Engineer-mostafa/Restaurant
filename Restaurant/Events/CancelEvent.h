@@ -9,9 +9,10 @@ class CancelEvent :public Event
 protected:
     int Timestep;
     int ID;
-    Order Cancel;
+   // Order Cancel;
 public:
-    CancelEvent(int et,int id,Order& c);
+    CancelEvent(int et, int id);
+    // CancelEvent(int et,int id,Order& c);
     void setTimestep(int t);
     int getTimestep() const;
 

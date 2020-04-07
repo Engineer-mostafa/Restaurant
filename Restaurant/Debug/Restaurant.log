@@ -1,11 +1,4 @@
 ﻿  Restaurant.cpp
-f:\mostafa\cmp 1\second semester\datastructure and algorithmis\project\cmp102_porj_code_spring2020\restaurant\rest\restaurant.cpp(96): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-f:\mostafa\cmp 1\second semester\datastructure and algorithmis\project\cmp102_porj_code_spring2020\restaurant\rest\restaurant.cpp(150): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1316): note: see declaration of 'itoa'
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Event.cpp
-  ArrivalEvent.cpp
-  Demo_Main.cpp
-  Restaurant.vcxproj -> F:\Mostafa\CMP 1\Second semester\DataStructure and algorithmis\Project\CMP102_Porj_code_Spring2020\Debug\Restaurant.exe
-  Restaurant.vcxproj -> F:\Mostafa\CMP 1\Second semester\DataStructure and algorithmis\Project\CMP102_Porj_code_Spring2020\Debug\Restaurant.pdb (Full PDB)
+C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Restaurant\Rest\Restaurant.cpp(98,9): warning C4101: 'order': unreferenced local variable
+C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Restaurant\Generic_DS\ListADT.h(93): warning C4715: 'ListADT<Order *>::DeleteFirst': not all control paths return a value
+  Restaurant.vcxproj -> C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Debug\Restaurant.exe

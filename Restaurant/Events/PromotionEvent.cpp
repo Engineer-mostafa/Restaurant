@@ -1,6 +1,6 @@
 #include "PromotionEvent.h"
 
-PromotionEvent::PromotionEvent(int ts, int id, Order& p,double ex=0):Event(ts,id),Promote(p)
+PromotionEvent::PromotionEvent(int ts, int id,double ex=0):Event(ts,id)
 {
 	setExMoney(ex);
 }
@@ -17,14 +17,6 @@ double PromotionEvent::GetExMoney() const
 
 void PromotionEvent::Execute(Restaurant* pRest)
 {
-	if (Promote.getStatus() != DONE && Promote.GetType() == TYPE_NRM)
-	{
-		Promote.SetType(TYPE_VIP);
-		Promote.setMoney(Promote.GetMoney()+ExMoney);
-
-	}
-	else
-	{
-		return;
-	}
+	
+	pRest->Promote_order(OrderID,ExMoney);
 }
