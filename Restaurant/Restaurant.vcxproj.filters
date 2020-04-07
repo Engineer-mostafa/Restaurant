@@ -114,12 +114,14 @@
     <ClInclude Include="Generic_DS\PQueueADT.h">
       <Filter>Restaurant</Filter>
     </ClInclude>
+
     <ClInclude Include="Events\CancelEvent.h">
       <Filter>Restaurant</Filter>
     </ClInclude>
     <ClInclude Include="Events\PromotionEvent.h">
       <Filter>Restaurant</Filter>
     </ClInclude>
+
     <ClInclude Include="Generic_DS\ListADT.h">
       <Filter>Restaurant</Filter>
     </ClInclude>

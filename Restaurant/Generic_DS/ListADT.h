@@ -78,6 +78,7 @@ public:
 		}
 
 	}
+
 	bool DeleteFirst(T& IT)
 	{
 		if (Head)
@@ -92,6 +93,8 @@ public:
 		}
 		return false;
 	}
+
+
 
 };
 
