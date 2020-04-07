@@ -114,6 +114,14 @@
     <ClInclude Include="Generic_DS\PQueueADT.h">
       <Filter>Restaurant</Filter>
     </ClInclude>
+
+    <ClInclude Include="Events\CancelEvent.h">
+      <Filter>Restaurant</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\PromotionEvent.h">
+      <Filter>Restaurant</Filter>
+    </ClInclude>
+
     <ClInclude Include="Generic_DS\ListADT.h">
       <Filter>Restaurant</Filter>
     </ClInclude>
@@ -243,6 +251,8 @@
     <ClCompile Include="Rest\Cook.cpp">
       <Filter>Restaurant</Filter>
     </ClCompile>
+    <ClCompile Include="Events\CancelEvent.cpp" />
+    <ClCompile Include="Events\PromotionEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">
@@ -251,5 +261,9 @@
     <Text Include="CMUgraphicsLib\Readme.txt">
       <Filter>CMUGraphicsLib</Filter>
     </Text>
+    <Text Include="Data_File.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\Restaurant.tlog\CL.command.1.tlog" />
   </ItemGroup>
 </Project>

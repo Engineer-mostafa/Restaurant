@@ -79,7 +79,20 @@ public:
 
 	}
 
-
+	bool DeleteFirst(T& IT)
+	{
+		if (Head)
+		{
+			IT = Head->getItem();
+			Node<T>* temp = Head;
+			Head = Head->getNext();
+			delete temp;
+			temp = nullptr;
+			return true;
+			
+		}
+		return false;
+	}
 
 
 

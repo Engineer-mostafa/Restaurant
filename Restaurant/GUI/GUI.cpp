@@ -1,5 +1,6 @@
 #include "GUI.h"
-
+#include<iostream>
+using namespace std;
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::GUI()
 {
@@ -7,7 +8,7 @@ GUI::GUI()
 	pWind = new window(WindWidth+15,WindHeight,0,0); 
 	pWind->ChangeTitle("The Restautant");
 
-
+	cout << "GUI constructor\n";
 	//Set color for each order type
 	DrawingColors[TYPE_NRM] =  RED;	//normal-order color
 	DrawingColors[TYPE_VGAN] = DARKBLUE;		//vegan-order color
@@ -244,21 +245,17 @@ void GUI::AddToDrawingList(Order* pOrd)
 	}
 
 	pDitem->region =reg;
-	
 	DrawingList[DrawingItemsCount++]=pDitem;
 
 }
 
 void GUI::AddToDrawingList(Cook* pC)
 {
-	
 	DrawingItem *pDitem=new DrawingItem;
 	pDitem->ID = pC->GetID();
 	pDitem->clr = DrawingColors[pC->GetType()];
 	pDitem->region = COOK_REG;
-	
 	DrawingList[DrawingItemsCount++]=pDitem;
-
 }
 
 void GUI::ResetDrawingList()
@@ -268,9 +265,6 @@ void GUI::ResetDrawingList()
 
 	DrawingItemsCount = 0;
 }
-
- 
-
 
 PROG_MODE	GUI::getGUIMode() const
 {
