@@ -16,7 +16,6 @@ Cook::Cook(char ty, int s)
 	ID = rand() % 50 + 1;
 	cout << ID;
 	speed = s;
-	cout << "   cook constructor\n";
 	switch (ty)
 	{
 	case 'N':

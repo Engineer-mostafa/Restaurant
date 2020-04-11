@@ -1,4 +1,2 @@
-﻿  Restaurant.cpp
-C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Restaurant\Rest\Restaurant.cpp(98,9): warning C4101: 'order': unreferenced local variable
-C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Restaurant\Generic_DS\ListADT.h(93): warning C4715: 'ListADT<Order *>::DeleteFirst': not all control paths return a value
-  Restaurant.vcxproj -> C:\Users\engra\OneDrive\Desktop\DS-Project\CMP102_Porj_code_Spring2020\New folder\New folder\Restaurant\Debug\Restaurant.exe
+﻿  Restaurant.vcxproj -> F:\Mostafa\CMP 1\Second semester\DataStructure and algorithmis\Project\CMP102_Porj_code_Spring2020\Debug\Restaurant.exe
+  Restaurant.vcxproj -> F:\Mostafa\CMP 1\Second semester\DataStructure and algorithmis\Project\CMP102_Porj_code_Spring2020\Debug\Restaurant.pdb (Full PDB)

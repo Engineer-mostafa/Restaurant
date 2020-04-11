@@ -62,6 +62,7 @@ Restaurant::~Restaurant()
 		if (pGUI)
 			delete pGUI;
 }
+
 void Restaurant::Load_Data(ifstream& read)
 {
 	
@@ -105,15 +106,15 @@ void Restaurant::Load_Data(ifstream& read)
 			read>> order_Type >> etime >> id >> ord_size >> money;
 			arr_event = new ArrivalEvent(etime,id,order_Type,ord_size,money);
 			EventsQueue.enqueue(arr_event);
-			/*arr_event->Execute(this);
-			pGUI->waitForClick();*/
+			arr_event->Execute(this);
+			pGUI->waitForClick();
 		}
 		else if (event_Type == 'X')
 		{
 			read >> etime >> id;
 			CancelEvent* cancel_event = new CancelEvent(etime, id);
 			EventsQueue.enqueue(cancel_event);
-			//cancel_event->Execute(this);
+			cancel_event->Execute(this);
 
 		}
 		else if (event_Type == 'P')
@@ -121,7 +122,7 @@ void Restaurant::Load_Data(ifstream& read)
 			read >> etime >> id >> money;
 			PromotionEvent* promote_event = new PromotionEvent(etime, id,money);
 			EventsQueue.enqueue(promote_event);
-			//promote_event->Execute(this);
+			promote_event->Execute(this);
 		}
 	}
 	FillDrawingList();
@@ -132,55 +133,51 @@ void Restaurant::Load_Data(ifstream& read)
 
 void Restaurant::Delete_Order(int n)
 {
-	Order* order=nullptr;
-	Queue<Order*> Q_O1,Q_O2;
+	Order* order = nullptr, *target = nullptr;
+	Queue<Order*> Q_O1, Q_O2;
+	//	bool found = false;
 	while (ON_LIST.DeleteFirst(order))
 	{
-		if (order && order->GetID() != n)
-			Q_O1.enqueue(order);
-		else break;
+		if (order)
+		{
+			if (order->GetID() == n && order->getStatus() == WAIT)
+			{
+				while (ORDERS_Queue.dequeue(order))
+				{
+					if (order->GetID() != n)
+					{
+						Q_O2.enqueue(order);
+					}
+				}
+
+				while (Q_O2.dequeue(order))
+				{
+					ORDERS_Queue.enqueue(order);
+
+				}
+
+			}
+			else
+				Q_O1.enqueue(order);
+		}
+
 	}
-	if (order&&order->getStatus() != WAIT)
+
+
+
+
+	while (Q_O1.dequeue(order))
 	{
 		ON_LIST.InsertEnd(order);
-		pGUI->PrintMessage("Order of ID " + to_string(n) + "  is being served or already done and can't be cacelled!");
 	}
-	else
-	{
-		while (!ORDERS_Queue.isEmpty())
-		{
-			ORDERS_Queue.dequeue(order);
 
-			if (order && order->GetID() != n)
-				Q_O2.enqueue(order);
-			else break;
-			
-
-		}
-		while (!Q_O2.isEmpty())
-		{
-			Q_O2.dequeue(order);
-
-			//if (order && order->GetID() != n)
-				ORDERS_Queue.enqueue(order);
-
-
-		}
-		pGUI->PrintMessage("Order of ID " + to_string(n) + " has been cancelled !");
-	}
-	
-	while (!Q_O1.isEmpty())
-	{
-		Q_O1.dequeue(order);
-		ON_LIST.InsertEnd(order);
-	}
 	pGUI->ResetDrawingList();
-	pGUI->UpdateInterface();
-//	pGUI->waitForClick();
+
 	FillDrawingList();
 	pGUI->UpdateInterface();
-	//pGUI->waitForClick();
+	pGUI->waitForClick();
 }
+
 
 void Restaurant::FillDrawingList()
 {
@@ -195,6 +192,7 @@ void Restaurant::FillDrawingList()
 		pGUI->AddToDrawingList(cook);
 		TEMPC_Queue.enqueue(cook);
 	}
+
 	while (!TEMPC_Queue.isEmpty())
 	{
 		TEMPC_Queue.dequeue(cook);
@@ -240,45 +238,46 @@ void Restaurant::AddtoORDERsLISTS(Order* po)
 		OG_LIST.enqueue(po);
 		break;
 	}
+
 	pGUI->ResetDrawingList();
 	FillDrawingList();
 	pGUI->UpdateInterface();
 }
 
-void Restaurant::Promote_order(int n,int ex)
+void Restaurant::Promote_order(int n, int ex)
 {
-	Order* order = nullptr;
+	Order* order = nullptr, *target = nullptr;
 	Queue<Order*> Q_O1, Q_O2;
 	while (ON_LIST.DeleteFirst(order))
 	{
-		if (order && order->GetID() != n)
-			Q_O1.enqueue(order);
-		else break;
+		if (order)
+		{
+			if (order->GetID() == n && order->getStatus() == WAIT)
+			{
+				order->setMoney(order->GetMoney() + ex);
+				order->SetType(TYPE_VIP);
+				OV_LIST.enqueue(order);
+
+			}
+			else
+				Q_O1.enqueue(order);
+		}
+
 	}
 
 
-	if (order && order->getStatus() != WAIT)
+
+
+	while (Q_O1.dequeue(order))
 	{
-		ON_LIST.InsertEnd(order);
-		pGUI->PrintMessage("Order of ID " + to_string(n) + "  is being served or already done and can't be cacelled!");
-	}
-	else
-	{
-		order->setMoney(order->GetMoney() + ex);
-		order->SetType(TYPE_VIP);
-		OV_LIST.enqueue(order);
-	}
-	while (!Q_O1.isEmpty())
-	{
-		Q_O1.dequeue(order);
+
 		ON_LIST.InsertEnd(order);
 	}
 	pGUI->ResetDrawingList();
-//	pGUI->UpdateInterface();
-//	pGUI->waitForClick();
+
 	FillDrawingList();
 	pGUI->UpdateInterface();
-//	pGUI->waitForClick();
+	pGUI->waitForClick();
 }
 
 

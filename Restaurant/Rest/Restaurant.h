@@ -12,6 +12,7 @@
 #include "..\Events\CancelEvent.h"
 #include "..\Events\PromotionEvent.h"
 #include "Order.h"
+
 #include "Cook.h"
 #include<fstream>
 
@@ -23,16 +24,14 @@ private:
 	Queue<Event*> EventsQueue;	//Queue of all events that will be loaded from file
 
 	
-	/// ==> 
-	//	DEMO-related members. Should be removed in phases 1&2
 	
-	ListADT<Order*> ON_LIST;
-	Queue<Order*> OG_LIST;
-	LinkedPQueue<Order*> OV_LIST;
-	  //Important: This is just for demo
-	/// ==>
 	
-	Queue<Order*> ORDERS_Queue;
+	ListADT<Order*> ON_LIST;			//normal order list
+	Queue<Order*> OG_LIST;				//vegan order list
+	LinkedPQueue<Order*> OV_LIST;		//vip order list
+	 
+	
+	Queue<Order*> ORDERS_Queue;			//total order list
 	Queue<Cook*> COOKS_Queue;
 
 	Queue<Cook*> CV_Queue;

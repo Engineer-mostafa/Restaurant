@@ -24,8 +24,7 @@ public:
 	Order();
 	Order(int ID, ORD_TYPE r_Type);
 	Order(ORD_TYPE type, int artime,int id, int size, double money);
-	virtual ~Order();
-
+	virtual ~Order();	
 	int GetID();
 
 	ORD_TYPE GetType() const;
