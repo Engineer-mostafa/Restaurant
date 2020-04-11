@@ -62,7 +62,6 @@ Restaurant::~Restaurant()
 		if (pGUI)
 			delete pGUI;
 }
-
 void Restaurant::Load_Data(ifstream& read)
 {
 	
@@ -90,6 +89,10 @@ void Restaurant::Load_Data(ifstream& read)
 			COOKS_Queue.enqueue(cook);
 		}
 	}
+	FillDrawingList();
+	pGUI->UpdateInterface();
+	pGUI->waitForClick();
+
 	//setCooks(N_speed, V_speed, G_speed);
 	read>> NUM_ORD>> NORM_BREAK>>VIP_BRAEK>> VEG_BREAK;
 	read >> AutoP >> numberofevents;
@@ -125,17 +128,14 @@ void Restaurant::Load_Data(ifstream& read)
 			promote_event->Execute(this);
 		}
 	}
-	FillDrawingList();
-	pGUI->UpdateInterface();
-//	pGUI->waitForClick();
-
+	
 }
 
 void Restaurant::Delete_Order(int n)
 {
-	Order* order = nullptr, *target = nullptr;
+	Order* order = nullptr, * target = nullptr;
 	Queue<Order*> Q_O1, Q_O2;
-	//	bool found = false;
+//	bool found = false;
 	while (ON_LIST.DeleteFirst(order))
 	{
 		if (order)
@@ -144,40 +144,38 @@ void Restaurant::Delete_Order(int n)
 			{
 				while (ORDERS_Queue.dequeue(order))
 				{
-					if (order->GetID() != n)
+					if (order->GetID()!=n)
 					{
 						Q_O2.enqueue(order);
+
 					}
 				}
-
 				while (Q_O2.dequeue(order))
 				{
 					ORDERS_Queue.enqueue(order);
 
 				}
-
+				
 			}
 			else
 				Q_O1.enqueue(order);
 		}
-
+		
 	}
 
 
-
+	
 
 	while (Q_O1.dequeue(order))
 	{
 		ON_LIST.InsertEnd(order);
 	}
-
 	pGUI->ResetDrawingList();
-
+	
 	FillDrawingList();
 	pGUI->UpdateInterface();
 	pGUI->waitForClick();
 }
-
 
 void Restaurant::FillDrawingList()
 {
@@ -192,7 +190,6 @@ void Restaurant::FillDrawingList()
 		pGUI->AddToDrawingList(cook);
 		TEMPC_Queue.enqueue(cook);
 	}
-
 	while (!TEMPC_Queue.isEmpty())
 	{
 		TEMPC_Queue.dequeue(cook);
@@ -238,15 +235,14 @@ void Restaurant::AddtoORDERsLISTS(Order* po)
 		OG_LIST.enqueue(po);
 		break;
 	}
-
 	pGUI->ResetDrawingList();
 	FillDrawingList();
 	pGUI->UpdateInterface();
 }
 
-void Restaurant::Promote_order(int n, int ex)
+void Restaurant::Promote_order(int n,int ex)
 {
-	Order* order = nullptr, *target = nullptr;
+	Order* order = nullptr, * target = nullptr;
 	Queue<Order*> Q_O1, Q_O2;
 	while (ON_LIST.DeleteFirst(order))
 	{
