@@ -8,21 +8,21 @@ Order::Order()
 
 Order::Order(int id, ORD_TYPE r_Type)
 {
-	ID = (id>0&&id<1000)?id:0;	//1<ID<999
+	ID = (id>0 && id<1000) ? id : 0;	//1<ID<999
 	type = r_Type;
 	status = WAIT;
 }
 
 Order::Order(ORD_TYPE r_Type, int arrtime, int id, int size, double money)
-{ 
-	cout << "order constructor\n";
-	ID = id>0?id:0;
+{
+	//cout << "order constructor\n";
+	ID = id>0 ? id : 0;
 	FinishTime = 0;
 	ServTime = 0;
 	status = WAIT;
-	ArrTime = arrtime>=0?arrtime:0;
-	Order_Size = size>0? size:0;
-	totalMoney = money>0?money:0;
+	ArrTime = arrtime >= 0 ? arrtime : 0;
+	Order_Size = size>0 ? size : 0;
+	totalMoney = money>0 ? money : 0;
 	type = r_Type;
 }
 Order::~Order()
@@ -72,7 +72,7 @@ double Order::GetMoney()
 bool Order::operator<(const Order& order)
 {
 	int p1 = totalMoney / (ArrTime* Order_Size);
-	int p2=order.totalMoney/(order. ArrTime * order.Order_Size);
+	int p2 = order.totalMoney / (order.ArrTime * order.Order_Size);
 	if (p1 < p2)
 		return true;
 	return false;

@@ -29,22 +29,4 @@ void CancelEvent::Execute(Restaurant* pRest)
 {
 	 pRest->Delete_Order(OrderID);
 
-
-
-
-
-
-	//if (Cancel.GetType() != TYPE_NRM&&ID!=Cancel.GetID())
-	//	return;
-	//else 
-	//{
-	//	//Cancel->setMoney(0);
-	//	Cancel.setStatus(DONE);
-	//	
-	//}
-	//
-
-
-
-	pRest->ExecuteEvents(Timestep);
 }

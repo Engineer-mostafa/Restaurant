@@ -13,9 +13,10 @@ Cook::~Cook()
 
 Cook::Cook(char ty, int s)
 {
-	ID = rand() % 50 + 1;
-	cout << ID;
+	ID = rand() % 50 + 1;//generating a random id 
+						 //cout << ID;
 	speed = s;
+	//	cout << "   cook constructor\n";
 	switch (ty)
 	{
 	case 'N':
@@ -27,10 +28,10 @@ Cook::Cook(char ty, int s)
 	case 'V':
 		type = TYPE_VIP;
 		break;
-	/*case'I':
+		/*case'I':
 		type = TYPE_INDN;
 		break;
-	case'C':
+		case'C':
 		type = TYPE_CHNS;*/
 	}
 }

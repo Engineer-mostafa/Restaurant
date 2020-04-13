@@ -95,6 +95,13 @@ public:
 	}
 
 
+	bool isEmpty() const
+	{
+		if (Head == nullptr)
+			return true;
+		else
+			return false;
+	}
 
 };
 
